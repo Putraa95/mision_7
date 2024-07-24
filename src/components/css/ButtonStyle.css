@@ -1,0 +1,13 @@
+.custom-button {
+  background-color: #e2fcd9cc;
+}
+
+.custom-button:active {
+  background-color: #94f08b; 
+}
+
+input[type="checkbox"].form-checkbox:checked {
+  border-color: #22c55e; 
+  background-color: #22c55e; 
+}
+
