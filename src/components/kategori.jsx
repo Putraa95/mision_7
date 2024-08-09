@@ -21,6 +21,8 @@ import { faBook, faClock, faMessage } from "@fortawesome/free-solid-svg-icons";
 
 import Footer from "../components/Footer";
 
+import Pagination from "./Pagination";
+
 const contentData = [
   {
     image: menu1Image,
@@ -69,6 +71,8 @@ const contentData = [
 ];
 
 const Kategori = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 6;
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -308,6 +312,7 @@ const Kategori = () => {
             </div>
           </div>
         </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
       </section>
       <Footer />
     </div>
