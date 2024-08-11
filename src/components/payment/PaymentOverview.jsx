@@ -33,7 +33,7 @@ import {
 //link menu
 import menu1 from "../../assets/images/menu/menu1.png";
 
-const Pembayaran = () => {
+const PaymentOverview = () => {
   return (
     // section Pembayaran
 
@@ -231,7 +231,7 @@ const Pembayaran = () => {
               </div>
             </div>
             <Link
-              to="/payment/pembayaran2" // Ganti dengan path ke halaman pembayaran
+              to="/payment/summary" // Ganti dengan path ke halaman pembayaran
               className="bg-green-500 text-white py-2 px-28 rounded-lg mt-6 inline-block text-center w-full"
             >
               Beli Sekarang
@@ -244,4 +244,4 @@ const Pembayaran = () => {
   );
 };
 
-export default Pembayaran;
+export default PaymentOverview;

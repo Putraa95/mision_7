@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //import navigasi
 import navIcon from "../../assets/images/navigasi.png";
 //import logo bca
-
+import logobca from "../../assets/images/logo_Pembayaran/bca2.png";
 //import FontAwesomeIcon
 
 //link logo
@@ -21,7 +21,7 @@ import {
 
 import menu1 from "../../assets/images/menu/menu1.png";
 
-const Pembayaran3 = () => {
+const PaymentDetails = () => {
   const [activeMethod, setActiveMethod] = useState(null);
 
   const methods = [
@@ -119,26 +119,44 @@ Pembayaran telah selesai`,
 
       <section>
         <div className="container mx-auto my-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-          <div className="inline-flex flex-col lg:w-3/4 p-4 bg-white rounded-lg shadow-md max-w-full">
-            <h1 className="font-bold text-xl ml-5">Ringkasan Pemesanan</h1>
-            <div className="flex justify-between items-center mt-2 p-4">
+          <div className="lg:w-3/4 p-4 bg-white rounded-lg">
+            <h1 className="text-xl font-bold">Metode Pembayaran</h1>
+            <div className="border p-4 flex flex-col items-center">
+              <img src={logobca} alt="" className="h-auto  " />
+              <div className="flex justify-center items-center mt-2  p-2">
+                <p className="text-l font-bold">
+                  Bayar Melalui Virtual Account BCA
+                </p>
+              </div>
+              <div className="flex justify-center items-center  p-2">
+                <p className=" text-l font-bold">
+                  11739 081234567890 <span className="text-red-500">Salin</span>
+                </p>
+              </div>
+            </div>
+
+            <h1 className="text-bold text-xl ml-5">Ringkasan Pemesanan</h1>
+            <div className="flex justify-between items-center mt-2  p-4">
               <p className="text-gray-500">
-                Video Learning: Gapai Karier Impianmu Sebagai Seorang UI/UX
+                Vedio Learning: Gapai Karier Impianmu Sebagai Seorang UI/UX
                 Designer & Product Manager
               </p>
+
               <div className="flex items-center">
                 <span className="text-gray-700 text-sm">Rp. 767.500</span>
               </div>
             </div>
-            <div className="flex justify-between items-center p-4">
+            <div className="flex justify-between items-center   p-4">
               <p className="text-gray-500">Biaya Admin</p>
+
               <div className="flex items-center">
                 <span className="text-gray-700 text-sm">Rp. 7.000</span>
               </div>
             </div>
-            <div className="border-b border-gray-300"></div>
-            <div className="flex justify-between items-center mt-2 p-4">
+            <div class="border-b border-gray-300"></div>
+            <div className="flex justify-between items-center mt-2  p-4">
               <p className="text-gray-500">Pembayaran</p>
+
               <div className="flex items-center">
                 <span className="text-green-500 text-sm">Rp. 775.000</span>
               </div>
@@ -147,7 +165,8 @@ Pembayaran telah selesai`,
               <button className="flex-1 bg-white border-2 border-green-500 text-green-500 py-2 px-4 rounded-lg">
                 Metode Pembayaran
               </button>
-              <Link to="/payment/pembayaran4" className="flex-1">
+
+              <Link to="/payment/overview" className="flex-1">
                 <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg">
                   Bayar Sekarang
                 </button>
@@ -155,29 +174,24 @@ Pembayaran telah selesai`,
             </div>
           </div>
 
-          <div className="w-full lg:w-1/4 p-6 bg-white rounded-lg shadow-lg mx-auto lg:mx-0">
-            <img
-              src={menu1}
-              alt="Kelas UI/UX"
-              className="w-full h-auto rounded-lg"
-            />
-            <p className="text-lg mb-4 text-center lg:text-left mt-4">
-              Gapai Karier Impianmu sebagai UI/UX Designer & Product Manager
+          <div className="max-w-sm lg:w-1/2 p-6 bg-white rounded-lg shadow-lg lg:order-1 mx-auto lg:mx-0 ">
+            <img src={menu1} alt="" />
+            <p className="text-lg mb-4 text-center lg:text-left">
+              Gapai Karier Impianmu sebagai UI / UX Designer & Product Manager
             </p>
             <div className="flex justify-between items-center mt-4">
-              <span className="text-1xl font-bold text-green-500">
-                Rp. 300.000
+              <span className="text-1xl font-bold text-green-500">300k</span>
+              <span className="text-1xl text-gray-500 mr-32">
+                <del>500K</del>
               </span>
-              <span className="text-1xl text-gray-500 mr-4">
-                <del>Rp. 500.000</del>
-              </span>
-              <span className="bg-orange-500 text-white rounded-xs px-2 py-1">
+              <span className="bg-orange-500 text-white rounded-xs">
                 Diskon 50%
               </span>
             </div>
-            <button className="w-full bg-green-500 text-white py-2 rounded-lg mt-6">
+            <button className="bg-green-500 text-white py-2 px-28 rounded-lg mt-6 inline-block text-center">
               Beli Sekarang
             </button>
+
             <div className="mt-6">
               <h3 className="text-xl font-bold mb-2">
                 Kelas ini sudah termasuk
@@ -241,4 +255,4 @@ Pembayaran telah selesai`,
   );
 };
 
-export default Pembayaran3;
+export default PaymentDetails;

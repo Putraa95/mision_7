@@ -1,20 +1,23 @@
-// src/App.js
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-//import navigasi
 import navIcon from "../../assets/images/navigasi.png";
-
 import sampleImage from "../../assets/images/logo_selesai/selesai.png";
 
-function Pembayaran4() {
+function PaymentSummary() {
+  const navigate = useNavigate(); // Inisialisasi useNavigate
+
+  const handleButtonClick = () => {
+    navigate("/order/processing"); // Arahkan ke halaman OrderConfirmation
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">
       <div className="bg-white shadow p-6 w-full flex flex-col lg:flex-row items-center justify-between">
         {/* Navbar */}
         <nav className="flex flex-col lg:flex-row items-center justify-between w-full">
           <img src={navIcon} alt="Navigation Logo" className="mb-4 lg:mb-0" />
-
           {/* Progress Bar for Desktop */}
           <div className="hidden lg:flex items-center space-x-6 lg:ml-auto mt-4 lg:mt-0">
             <div className="flex items-center">
@@ -53,7 +56,10 @@ function Pembayaran4() {
             Silakan cek email kamu untuk informasi lebih lanjut. Hubungi kami
             jika ada kendala.
           </span>
-          <button className=" bg-green-500 text-white py-4 px-6 rounded-lg mt-6 ">
+          <button
+            onClick={handleButtonClick} // Tambahkan handler klik
+            className="bg-green-500 text-white py-4 px-6 rounded-lg mt-6"
+          >
             Lihat Detail Pemesanan
           </button>
         </div>
@@ -62,4 +68,4 @@ function Pembayaran4() {
   );
 }
 
-export default Pembayaran4;
+export default PaymentSummary;

@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import googleIcon from "../assets/images/logo_Google/google.png";
 import navIcon from "../assets/images/navigasi.png";
 
 const RegisterForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // Validasi dan logika registrasi
+    if (password === confirmPassword) {
+      // Simulasi registrasi
+      alert("Registrasi berhasil!");
+      navigate("/");
+    } else {
+      alert("Kata sandi tidak cocok.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-[#FFE58036] font-sans">
       <nav className="bg-white shadow p-4 w-full flex items-center justify-between">
@@ -17,27 +37,23 @@ const RegisterForm = () => {
             <p className="text-center text-gray-600">
               Yuk, mulai perjalanan belajarmu dengan mendaftar
             </p>
-
-            <form
-              className="px-6 py-4"
-              method="post"
-              action="register_submit.html"
-            >
+            <form className="px-6 py-4" onSubmit={handleRegister}>
               <div className="mb-4">
                 <label
-                  htmlFor="nama"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Nama Lengkap
                 </label>
                 <input
                   type="text"
-                  id="nama"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <label
                   htmlFor="email"
@@ -48,26 +64,28 @@ const RegisterForm = () => {
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <label
-                  htmlFor="nohp"
+                  htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Nomor HP
                 </label>
                 <input
                   type="tel"
-                  id="nohp"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <label
                   htmlFor="password"
@@ -78,11 +96,12 @@ const RegisterForm = () => {
                 <input
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <label
                   htmlFor="confirmPassword"
@@ -93,30 +112,18 @@ const RegisterForm = () => {
                 <input
                   type="password"
                   id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
-                style={{
-                  backgroundColor: "#E2FCD9CC", // Warna default
-                  ":active": {
-                    backgroundColor: "#94F08B", // Warna saat tombol sedang ditekan
-                  },
-                }}
-              >
-                <span className="text-green-500">Daftar</span>
-              </button>
-
-              <button
-                type="submit"
                 className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
               >
-                Masuk
+                Daftar
               </button>
-
               <div className="submit_line text-center my-4">
                 <p className="text-sm text-gray-600">atau</p>
               </div>

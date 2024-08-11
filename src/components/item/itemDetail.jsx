@@ -35,7 +35,7 @@ import menu2Image from "../assets/images/menu/menu2.png";
 import menu3Image from "../assets/images/menu/menu3.png";
 
 // import footer
-import Footer from "./Footer";
+import Footer from "../common/Footer";
 
 //import use navitve
 
@@ -169,7 +169,7 @@ const ItemDetail = () => {
           </div>
 
           <Link
-            to="/payment/confirmation" // Ganti dengan path ke halaman pembayaran
+            to="/payment/pembayaran" // Ganti dengan path ke halaman pembayaran
             className="bg-green-500 text-white py-2 px-28 rounded-lg mt-6 inline-block text-center"
           >
             Beli Sekarang

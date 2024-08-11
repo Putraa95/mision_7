@@ -8,7 +8,7 @@ import navIcon from "../../assets/images/navigasi.png";
 import sampleImage from "./gambar/Avatar (3).png"; // Ganti dengan path gambar yang sesuai
 import Footer from "../Footer";
 
-const Order3 = () => {
+const OrderConfirmation = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">
       <div className="bg-white shadow p-6 w-full flex flex-col lg:flex-row items-center justify-between">
@@ -110,4 +110,4 @@ const Order3 = () => {
   );
 };
 
-export default Order3;
+export default OrderConfirmation;
