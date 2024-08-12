@@ -8,11 +8,12 @@ import {
 import navIcon from "../../assets/images/navigasi.png";
 import SearchBar from "../SearchBar";
 import DropdownButton from "../DropdownButton";
-import image1 from "../../assets/images/avatar/Avatar11.png";
-import Invoice from "../../components/order/invoice";
+import image1 from "../../assets/images/avatar/Avatar12.png";
+import Invoice2 from "../../components/order/invoice2";
 import Footer from "../Footer";
-
-function OrderProcessing() {
+import Avatar1 from "../../assets/images/avatar/Avatar1.png";
+const invoices = [0, 1, 2, 3, 4];
+function OrderComplete() {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
 
@@ -110,8 +111,8 @@ function OrderProcessing() {
               ]}
             />
           </div>
-          {[...Array(5).keys()].map((index) => (
-            <Invoice
+          {invoices.map((index) => (
+            <Invoice2
               key={index}
               noInvoice={`HEL/VI/10062023-${index}`}
               waktuPembayaran="10 Juni 2023, 14.17"
@@ -124,7 +125,12 @@ function OrderProcessing() {
               }
               imageSrc={image1}
               judul="Belajar Microsoft Office dan Google Workspace untuk Pemula"
+              p=""
               harga="Rp 300.000"
+              paragraf={`Deskripsi untuk invoice ${index}.`}
+              gambar={Avatar1}
+              nama="Jannie Ruby Jane"
+              jabatan="Customer Service"
             />
           ))}
         </section>
@@ -135,4 +141,4 @@ function OrderProcessing() {
   );
 }
 
-export default OrderProcessing;
+export default OrderComplete;

@@ -1,7 +1,7 @@
 // src/components/Invoice.js
 import React from "react";
 
-const Invoice = ({
+const Invoice2 = ({
   noInvoice,
   waktuPembayaran,
   status,
@@ -35,8 +35,8 @@ const Invoice = ({
       </div>
 
       {/* Detail */}
-      <div className="border p-4 rounded-lg flex items-center space-x-4 mb-4">
-        <img src={imageSrc} alt="Invoice" className="w-16 h-16 object-cover" />
+      <div className="border p2 rounded-lg flex  space-x-4 mb-4">
+        <img src={imageSrc} alt="Invoice" className="" />
         <div className="flex-1">
           <p className="mb-2 font-semibold">{judul}</p>
         </div>
@@ -58,4 +58,4 @@ const Invoice = ({
   );
 };
 
-export default Invoice;
+export default Invoice2;

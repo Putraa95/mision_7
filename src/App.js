@@ -15,6 +15,7 @@ import PaymentConfirmation from "./components/payment/PaymentConfirmation";
 import PaymentSummary from "./components/payment/PaymentSummary";
 import OrderProcessing from "./components/order/OrderProcessing";
 import OrderConfirmation from "./components/order/OrderConfirmation";
+import OrderComplete from "./components/order/OrderComplete";
 import Invoice from "./components/order/invoice";
 import Pagination from "./components/Pagination";
 
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/payment/summary" element={<PaymentSummary />} />
       <Route path="/order/processing" element={<OrderProcessing />} />
       <Route path="/order/confirmation" element={<OrderConfirmation />} />
+      <Route path="/order/complete" element={<OrderComplete />} />
       <Route path="/order/invoice" element={<Invoice />} />
       <Route path="/footer" element={<Footer />} />
       <Route path="/pagination" element={<Pagination />} />
