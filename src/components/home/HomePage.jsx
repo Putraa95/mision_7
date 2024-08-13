@@ -2,36 +2,36 @@ import React from "react";
 
 //import navbar
 import { Link } from "react-router-dom";
-import navigasiImage from "../assets/images/navigasi.png";
+import navigasiImage from "../../assets/images/navigasi.png";
 
 //import gambar menu
-import menu1Image from "../assets/images/menu/menu1.png";
-import menu2Image from "../assets/images/menu/menu2.png";
-import menu3Image from "../assets/images/menu/menu3.png";
-import menu4Image from "../assets/images/menu/menu4.png";
-import menu5Image from "../assets/images/menu/menu5.png";
-import menu6Image from "../assets/images/menu/menu6.png";
-import menu7Image from "../assets/images/menu/menu7.png";
-import menu8Image from "../assets/images/menu/menu8.png";
-import menu9Image from "../assets/images/menu/menu9.png";
+import menu1Image from "../../assets/images/menu/menu1.png";
+import menu2Image from "../../assets/images/menu/menu2.png";
+import menu3Image from "../../assets/images/menu/menu3.png";
+import menu4Image from "../../assets/images/menu/menu4.png";
+import menu5Image from "../../assets/images/menu/menu5.png";
+import menu6Image from "../../assets/images/menu/menu6.png";
+import menu7Image from "../../assets/images/menu/menu7.png";
+import menu8Image from "../../assets/images/menu/menu8.png";
+import menu9Image from "../../assets/images/menu/menu9.png";
 
 //import avatar
-import avatar1Image from "../assets/images/avatar/Avatar1.png";
-import avatar2Image from "../assets/images/avatar/Avatar2.png";
-import avatar3Image from "../assets/images/avatar/Avatar3.png";
-import avatar4Image from "../assets/images/avatar/Avatar4.png";
-import avatar5Image from "../assets/images/avatar/Avatar5.png";
-import avatar6Image from "../assets/images/avatar/Avatar6.png";
-import avatar7Image from "../assets/images/avatar/Avatar7.png";
-import avatar8Image from "../assets/images/avatar/Avatar8.png";
-import avatar9Image from "../assets/images/avatar/Avatar9.png";
+import avatar1Image from "../../assets/images/avatar/Avatar1.png";
+import avatar2Image from "../../assets/images/avatar/Avatar2.png";
+import avatar3Image from "../../assets/images/avatar/Avatar3.png";
+import avatar4Image from "../../assets/images/avatar/Avatar4.png";
+import avatar5Image from "../../assets/images/avatar/Avatar5.png";
+import avatar6Image from "../../assets/images/avatar/Avatar6.png";
+import avatar7Image from "../../assets/images/avatar/Avatar7.png";
+import avatar8Image from "../../assets/images/avatar/Avatar8.png";
+import avatar9Image from "../../assets/images/avatar/Avatar9.png";
 
 //import backgrund
-import background from "../assets/images/latar/background.jpg";
-import background1 from "../assets/images/latar/cover.jpg";
+import background from "../../assets/images/latar/background.jpg";
+import background1 from "../../assets/images/latar/cover.jpg";
 
 //menambahkan footer
-import Footer from "./Footer";
+import Footer from "../item/Footer";
 
 const contentData = [
   {

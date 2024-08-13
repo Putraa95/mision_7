@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //import background
-import background from "../assets/images/latar/background.jpg";
+import background from "../../assets/images/latar/background.jpg";
 
 //import Navigation
-import navigasiImage from "../assets/images/navigasi.png";
+import navigasiImage from "../../assets/images/navigasi.png";
 
 // import Font AweSome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,17 +25,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 //import Avatar
-import avatar1Image from "../assets/images/avatar/Avatar1.png";
-import avatar2Image from "../assets/images/avatar/Avatar2.png";
-import avatar3Image from "../assets/images/avatar/Avatar3.png";
+import avatar1Image from "../../assets/images/avatar/Avatar1.png";
+import avatar2Image from "../../assets/images/avatar/Avatar2.png";
+import avatar3Image from "../../assets/images/avatar/Avatar3.png";
 
 //import Menu
-import menu1Image from "../assets/images/menu/menu1.png";
-import menu2Image from "../assets/images/menu/menu2.png";
-import menu3Image from "../assets/images/menu/menu3.png";
+import menu1Image from "../../assets/images/menu/menu1.png";
+import menu2Image from "../../assets/images/menu/menu2.png";
+import menu3Image from "../../assets/images/menu/menu3.png";
 
 // import footer
-import Footer from "./Footer";
+import Footer from "../item/Footer";
 
 //import use navitve
 

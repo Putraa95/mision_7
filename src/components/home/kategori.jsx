@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import DropdownButton from "./DropdownButton";
-import SearchBar from "./SearchBar";
-import navigasiImage from "../assets/images/navigasi.png";
-import avatar1Image from "../assets/images/avatar/Avatar1.png";
-import menu1Image from "../assets/images/menu/menu1.png";
-import menu2Image from "../assets/images/menu/menu2.png";
-import menu3Image from "../assets/images/menu/menu3.png";
-import menu4Image from "../assets/images/menu/menu4.png";
-import avatar2Image from "../assets/images/avatar/Avatar2.png";
-import avatar3Image from "../assets/images/avatar/Avatar3.png";
-import avatar4Image from "../assets/images/avatar/Avatar4.png";
+import DropdownButton from "../item/DropdownButton";
+import SearchBar from "../item/SearchBar";
+import navigasiImage from "../../assets/images/navigasi.png";
+import avatar1Image from "../../assets/images/avatar/Avatar1.png";
+import menu1Image from "../../assets/images/menu/menu1.png";
+import menu2Image from "../../assets/images/menu/menu2.png";
+import menu3Image from "../../assets/images/menu/menu3.png";
+import menu4Image from "../../assets/images/menu/menu4.png";
+import avatar2Image from "../../assets/images/avatar/Avatar2.png";
+import avatar3Image from "../../assets/images/avatar/Avatar3.png";
+import avatar4Image from "../../assets/images/avatar/Avatar4.png";
 
 // import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 // import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
@@ -19,9 +19,9 @@ import avatar4Image from "../assets/images/avatar/Avatar4.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faClock, faMessage } from "@fortawesome/free-solid-svg-icons";
 
-import Footer from "../components/Footer";
+import Footer from "../item/Footer";
 
-import Pagination from "./Pagination";
+import Pagination from "../item/Pagination";
 
 const contentData = [
   {
@@ -71,7 +71,7 @@ const contentData = [
 ];
 
 const Kategori = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const totalPages = 6;
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 

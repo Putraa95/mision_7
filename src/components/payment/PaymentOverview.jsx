@@ -2,7 +2,7 @@ import React from "react";
 // import navigasiImage from "../assets/images/navigasi.png";
 import { Link } from "react-router-dom";
 
-import Footer from "../Footer";
+import Footer from "../item/Footer";
 
 //import navigasi
 

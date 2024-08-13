@@ -1,13 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+//auth
+import LoginForm from "./components/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
+import ForgotPasswordPage from "./components/auth/ForgotPasswordPage";
+//home
+import HomePage from "./components/home/HomePage";
+import Kategori from "./components/home/kategori";
+import ItemDetail from "./components/home/itemDetail";
 
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-import HomePage from "./components/HomePage";
-import Kategori from "./components/kategori";
-import ItemDetail from "./components/itemDetail";
-import Footer from "./components/Footer";
-import ForgotPasswordPage from "./components/ForgotPasswordPage";
+import Footer from "./components/item/Footer";
 
 import PaymentOverview from "./components/payment/PaymentOverview";
 import PaymentDetails from "./components/payment/PaymentDetails";
@@ -16,15 +18,17 @@ import PaymentSummary from "./components/payment/PaymentSummary";
 import OrderProcessing from "./components/order/OrderProcessing";
 import OrderConfirmation from "./components/order/OrderConfirmation";
 import OrderComplete from "./components/order/OrderComplete";
-import Invoice from "./components/order/invoice";
-import Pagination from "./components/Pagination";
+import Invoice from "./components/order/invoice/invoice";
+import Invoice2 from "./components/order/invoice/invoiceOrderComplete";
+import Pagination from "./components/item/Pagination";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginForm />} />
-      <Route path="/home" element={<HomePage />} />
       <Route path="/register" element={<RegisterForm />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/kategori" element={<Kategori />} />
       <Route path="/itemDetail/:id" element={<ItemDetail />} />
       <Route path="/payment/overview" element={<PaymentOverview />} />
@@ -35,9 +39,9 @@ const App = () => {
       <Route path="/order/confirmation" element={<OrderConfirmation />} />
       <Route path="/order/complete" element={<OrderComplete />} />
       <Route path="/order/invoice" element={<Invoice />} />
+      <Route path="/order/invoice2" element={<Invoice2 />} />
       <Route path="/footer" element={<Footer />} />
       <Route path="/pagination" element={<Pagination />} />
-      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
     </Routes>
   );
 };

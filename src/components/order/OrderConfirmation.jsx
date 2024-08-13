@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline"; // Pastikan kamu telah menginstal heroicons
 import navIcon from "../../assets/images/navigasi.png";
 import sampleImage from "../../assets/images/avatar/Avatar10.png"; // Ganti dengan path gambar yang sesuai
-import Footer from "../Footer";
+import Footer from "../item/Footer";
 
 const OrderConfirmation = () => {
   const [selectedItem, setSelectedItem] = useState(null);

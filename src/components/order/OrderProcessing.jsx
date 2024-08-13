@@ -6,11 +6,11 @@ import {
   BookOpenIcon,
 } from "@heroicons/react/24/outline";
 import navIcon from "../../assets/images/navigasi.png";
-import SearchBar from "../SearchBar";
-import DropdownButton from "../DropdownButton";
+import SearchBar from "../item/SearchBar";
+import DropdownButton from "../item/DropdownButton";
 import image1 from "../../assets/images/avatar/Avatar11.png";
-import Invoice from "../../components/order/invoice";
-import Footer from "../Footer";
+import Invoice from "./invoice/invoice";
+import Footer from "../item/Footer";
 
 function OrderProcessing() {
   const [selectedItem, setSelectedItem] = useState(null);

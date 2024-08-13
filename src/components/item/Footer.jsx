@@ -1,7 +1,7 @@
 // src/components/Footer.js
 import React from "react";
 import { FaTwitter, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
-import navigasiImage from "../assets/images/navigasi.png"; // Pastikan path ini benar
+import navigasiImage from "../../assets/images/navigasi.png"; // Pastikan path ini benar
 
 const Footer = () => {
   return (

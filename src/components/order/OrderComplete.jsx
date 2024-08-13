@@ -6,14 +6,53 @@ import {
   BookOpenIcon,
 } from "@heroicons/react/24/outline";
 import navIcon from "../../assets/images/navigasi.png";
-import SearchBar from "../SearchBar";
-import DropdownButton from "../DropdownButton";
+import SearchBar from "../item/SearchBar";
+import DropdownButton from "../item/DropdownButton";
 import image1 from "../../assets/images/avatar/Avatar12.png";
-import Invoice2 from "../../components/order/invoice2";
-import Footer from "../Footer";
+import Invoice2 from "./invoice/invoiceOrderComplete";
+import Footer from "../item/Footer";
 import Avatar1 from "../../assets/images/avatar/Avatar1.png";
-const invoices = [0, 1, 2, 3, 4];
+import Pagination from "../item/Pagination";
+
+const invoices = [
+  {
+    status: "Selesai",
+    imageSrc: image1,
+    judul: "Be12/1",
+    paragraf:
+      "Mulai transformasi dengan instruktur profesional harga terjangkau dan kurikulum yang terbaik",
+    AvatarSrc: Avatar1,
+    author: "Jenna Ortega",
+    position: "Senior Accountant di Gojek",
+    progressPercentage: 80, // Persentase progres
+  },
+  {
+    status: "Sedang Berjalan",
+    imageSrc: image1,
+    judul: "Be34/2",
+    paragraf:
+      "Program pelatihan dengan fasilitas premium dan mentor berpengalaman",
+    AvatarSrc: Avatar1,
+    author: "John Doe",
+    position: "Project Manager di Grab",
+    progressPercentage: 50, // Persentase progres
+  },
+  {
+    status: "Sedang Berjalan",
+    imageSrc: image1,
+    judul: "Be56/3",
+    paragraf: "Kursus dengan bahan ajar lengkap dan penilaian menyeluruh",
+    AvatarSrc: Avatar1,
+    author: "Alice Smith",
+    position: "Marketing Lead di Tokopedia",
+    progressPercentage: 20, // Persentase progres
+  },
+];
+
 function OrderComplete() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 6;
+
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
 
@@ -33,22 +72,20 @@ function OrderComplete() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">
-      <header className="bg-white shadow p-6 w-full flex flex-col lg:flex-row items-center justify-between">
-        <nav className="flex items-center justify-between w-full">
-          <img src={navIcon} alt="Navigation Logo" className="mb-4 lg:mb-0" />
-        </nav>
+      <header className="bg-white shadow p-4 lg:p-6 w-full flex flex-col lg:flex-row items-center justify-between">
+        <img src={navIcon} alt="Navigation Logo" className="mb-4 lg:mb-0" />
       </header>
 
-      <div className="p-6">
+      <div className="p-4 lg:p-6">
         <h1 className="font-bold text-2xl mb-2">Daftar Pesanan</h1>
         <p className="text-lg">Informasi terinci mengenai pembelian</p>
       </div>
 
-      <main className="flex flex-col lg:flex-row flex-1 p-6 ">
+      <main className="flex flex-col lg:flex-row flex-1 p-4 lg:p-6">
         {/* Section 1 */}
-        <aside className="p-4 lg:p-6 lg:w-1/4 max-w-xs mx-auto lg:mx-0 lg:mr-4 mb-4 lg:mb-0">
+        <aside className="p-4 lg:w-1/4 lg:mr-4 mb-4 lg:mb-0">
           <div className="bg-white shadow rounded-lg p-4">
-            <ul>
+            <ul className="space-y-2">
               <li
                 onClick={() => handleClick("profile")} // Perbarui nilai ke "profile"
                 className={`flex items-center p-2 cursor-pointer ${
@@ -81,7 +118,7 @@ function OrderComplete() {
         </aside>
 
         {/* Section 2 */}
-        <section className="bg-white shadow p-4 lg:p-8 lg:w-3/4 flex-1 ">
+        <section className="bg-white shadow rounded-lg p-4 lg:p-6 flex-1">
           <div className="flex flex-wrap gap-2 lg:gap-4 mb-4">
             <div className="px-4 py-2 cursor-pointer text-sm lg:text-base">
               Semua Kelas
@@ -111,28 +148,20 @@ function OrderComplete() {
               ]}
             />
           </div>
-          {invoices.map((index) => (
+          {invoices.map((invoice, index) => (
             <Invoice2
               key={index}
-              noInvoice={`HEL/VI/10062023-${index}`}
-              waktuPembayaran="10 Juni 2023, 14.17"
-              status={
-                index % 3 === 0
-                  ? "Berhasil"
-                  : index % 2 === 0
-                  ? "Gagal"
-                  : "Belum Bayar"
-              }
-              imageSrc={image1}
-              judul="Belajar Microsoft Office dan Google Workspace untuk Pemula"
-              p=""
-              harga="Rp 300.000"
-              paragraf={`Deskripsi untuk invoice ${index}.`}
-              gambar={Avatar1}
-              nama="Jannie Ruby Jane"
-              jabatan="Customer Service"
+              status={invoice.status}
+              imageSrc={invoice.imageSrc}
+              judul={invoice.judul}
+              paragraf={invoice.paragraf}
+              AvatarSrc={invoice.AvatarSrc}
+              author={invoice.author}
+              position={invoice.position}
+              progressPercentage={invoice.progressPercentage}
             />
           ))}
+          <Pagination totalPages={totalPages} />
         </section>
       </main>
 

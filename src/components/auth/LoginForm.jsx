@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import googleIcon from "../assets/images/logo_Google/google.png";
-import navIcon from "../assets/images/navigasi.png";
+import googleIcon from "../../assets/images/logo_Google/google.png";
+import navIcon from "../../assets/images/navigasi.png";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
