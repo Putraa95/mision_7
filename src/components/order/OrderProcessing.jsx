@@ -19,8 +19,8 @@ function OrderProcessing() {
   const handleClick = (item) => {
     setSelectedItem(item);
     switch (item) {
-      case "order3":
-        navigate("/order/processing");
+      case "class":
+        navigate("/order/complete");
         break;
       case "profile":
         navigate("/order/confirmation"); // Perbarui rute ke order/confirmation

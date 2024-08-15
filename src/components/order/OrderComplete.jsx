@@ -50,25 +50,33 @@ const invoices = [
 ];
 
 function OrderComplete() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 6;
-
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
 
   const handleClick = (item) => {
     setSelectedItem(item);
     switch (item) {
+      case "class":
+
+      case "complete":
+        navigate("/order/complete"); // Perbarui rute ke order/confirmation
+        break;
+
       case "order3":
         navigate("/order/processing");
         break;
+
       case "profile":
         navigate("/order/confirmation"); // Perbarui rute ke order/confirmation
         break;
+
       default:
         break;
     }
   };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 6;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">

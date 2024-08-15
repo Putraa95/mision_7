@@ -16,13 +16,15 @@ import {
   faCertificate,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
+import Countdown from "../../components/item/Contdown";
 //import menu
 
 import menu1 from "../../assets/images/menu/menu1.png";
 
 const PaymentDetails = () => {
   const [activeMethod, setActiveMethod] = useState(null);
+
+  const endTime = new Date().getTime() + 3600 * 1000; // Contoh: waktu 1 jam dari sekarang
 
   const methods = [
     {
@@ -89,7 +91,7 @@ Pembayaran telah selesai`,
             </div>
           </nav>
         </div>
-
+        <Countdown endTime={endTime} />
         {/* Progress Bar for Mobile */}
         <div className="lg:hidden  w-full p-4 flex items-center justify-center">
           <div className="flex space-x-6">
@@ -162,11 +164,13 @@ Pembayaran telah selesai`,
               </div>
             </div>
             <div className="flex space-x-4 mt-4">
-              <button className="flex-1 bg-white border-2 border-green-500 text-green-500 py-2 px-4 rounded-lg">
-                Metode Pembayaran
-              </button>
-
-              <Link to="/payment/overview" className="flex-1">
+              <Link to="/payment/confirmation" className="flex-1">
+                <button className="w-full bg-white border-2 border-green-500 text-green-500 py-2 px-4 rounded-lg">
+                  Ganti Metode Pembayaran
+                </button>
+              </Link>
+              <Link to="/payment/summary" className="flex-1">
+                {" "}
                 <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg">
                   Bayar Sekarang
                 </button>

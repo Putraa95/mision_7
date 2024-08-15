@@ -16,10 +16,7 @@ const OrderConfirmation = () => {
   const handleClick = (item) => {
     setSelectedItem(item);
     switch (item) {
-      case "order3":
-        navigate("/order/confirmation");
-        break;
-      case "processing":
+      case "order":
         navigate("/order/processing"); // Perbarui rute ke order/confirmation
         break;
       case "complete":
@@ -82,9 +79,9 @@ const OrderConfirmation = () => {
         <div className="bg-white shadow p-6 w-full lg:w-1/6 lg:mr-4">
           <ul>
             <li
-              onClick={() => handleClick("proceesing")} // Perbarui nilai ke "profile"
+              onClick={() => handleClick("profile")} // Perbarui nilai ke "profile"
               className={`flex items-center p-2 cursor-pointer ${
-                selectedItem === "proceesing" ? "bg-orange-400 text-white" : ""
+                selectedItem === "profile" ? "bg-orange-400 text-white" : ""
               }`}
             >
               <PencilIcon className="w-6 h-6 mr-2" />
@@ -100,7 +97,7 @@ const OrderConfirmation = () => {
               Kelas Saya
             </li>
             <li
-              onClick={() => handleClick("proceesing")} // Perbarui nilai ke "profile"
+              onClick={() => handleClick("order")} // Perbarui nilai ke "profile"
               className={`flex items-center p-2 cursor-pointer ${
                 selectedItem === "proceesing" ? "bg-orange-400 text-white" : ""
               }`}

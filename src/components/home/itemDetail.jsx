@@ -169,7 +169,7 @@ const ItemDetail = () => {
           </div>
 
           <Link
-            to="/payment/confirmation" // Ganti dengan path ke halaman pembayaran
+            to="/payment/overview" // Ganti dengan path ke halaman pembayaran
             className="bg-green-500 text-white py-2 px-28 rounded-lg mt-6 inline-block text-center"
           >
             Beli Sekarang

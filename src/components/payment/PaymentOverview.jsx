@@ -231,7 +231,7 @@ const PaymentOverview = () => {
               </div>
             </div>
             <Link
-              to="/payment/summary" // Ganti dengan path ke halaman pembayaran
+              to="/payment/details" // Ganti dengan path ke halaman pembayaran
               className="bg-green-500 text-white py-2 px-28 rounded-lg mt-6 inline-block text-center w-full"
             >
               Beli Sekarang

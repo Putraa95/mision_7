@@ -143,20 +143,6 @@ Pembayaran telah selesai`,
                 <span className="text-green-500 text-sm">Rp. 775.000</span>
               </div>
             </div>
-            <div className="flex space-x-4 mt-4">
-              <button className="flex-1 bg-white border-2 border-green-500 text-green-500 py-2 px-4 rounded-lg">
-                Metode Pembayaran
-              </button>
-              <Link
-                to="/payment/details
-              "
-                className="flex-1"
-              >
-                <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg">
-                  Bayar Sekarang
-                </button>
-              </Link>
-            </div>
           </div>
 
           <div className="w-full lg:w-1/4 p-6 bg-white rounded-lg shadow-lg mx-auto lg:mx-0">
@@ -239,6 +225,17 @@ Pembayaran telah selesai`,
               )}
             </div>
           ))}
+          <div className="flex space-x-4 mt-4">
+            <Link
+              to="/payment/summary
+              "
+              className="flex-1"
+            >
+              <button className="w-full bg-green-500 text-white py-2 px-4 rounded-lg">
+                Bayar Sekarang
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
