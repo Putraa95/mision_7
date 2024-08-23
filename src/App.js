@@ -21,6 +21,10 @@ import OrderComplete from "./components/order/OrderComplete";
 import Invoice from "./components/order/invoice/invoice";
 import Invoice2 from "./components/order/invoice/invoiceOrderComplete";
 import Pagination from "./components/item/Pagination";
+import ClassroomEntry from "./components/classroomAcces/ClaasroomEntry";
+import ClassroomQuiz from "./components/classroomAcces/ClassroomQuiz";
+import Question from "./components/classroomAcces/classroomQuestion/Question";
+import QuestionNavigation from "./components/classroomAcces/classroomQuestion/QuestionNavigation";
 
 const App = () => {
   return (
@@ -38,6 +42,16 @@ const App = () => {
       <Route path="/order/processing" element={<OrderProcessing />} />
       <Route path="/order/confirmation" element={<OrderConfirmation />} />
       <Route path="/order/complete" element={<OrderComplete />} />
+      <Route path="/classroomAcces/Entry" element={<ClassroomEntry />} />
+      <Route path="/classroomAcces/quiz" element={<ClassroomQuiz />} />
+      <Route
+        path="/classroomAcces/ClassroomQuestion/Question"
+        element={<Question />}
+      />
+      <Route
+        path="/classroomAcces/ClassroomQuestion/Questionnavigation"
+        element={<QuestionNavigation />}
+      />
       <Route path="/order/invoice" element={<Invoice />} />
       <Route path="/order/invoice2" element={<Invoice2 />} />
       <Route path="/footer" element={<Footer />} />

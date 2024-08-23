@@ -11,7 +11,6 @@ const LoginForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simulasi login (Anda dapat menambahkan logika autentikasi sebenarnya di sini)
     if (email && password) {
       navigate("/home");
     } else {
@@ -87,13 +86,13 @@ const LoginForm = () => {
                     Ingat Saya
                   </label>
                 </div>
-                <a
-                  href="#"
+                <button
+                  type="button"
                   onClick={handleForgotPasswordRedirect}
-                  className="text-sm text-black-600 hover:underline"
+                  className="text-sm text-black-600 hover:underline bg-transparent border-none"
                 >
                   Lupa password?
-                </a>
+                </button>
               </div>
               <button
                 type="submit"
@@ -104,7 +103,7 @@ const LoginForm = () => {
               <button
                 type="button"
                 onClick={handleRegisterRedirect}
-                className="w-full   text-green-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
+                className="w-full text-green-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
                 style={{
                   backgroundColor: "#E2FCD9CC", // Warna default
                 }}

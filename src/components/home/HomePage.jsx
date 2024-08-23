@@ -1,8 +1,14 @@
-import React from "react";
-
-//import navbar
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer from "../item/Footer";
+
+//import picture navigation
 import navigasiImage from "../../assets/images/navigasi.png";
+
+// import backgruond
+import background from "../../assets/images/latar/background.jpg";
+import background1 from "../../assets/images/latar/cover.jpg";
 
 //import gambar menu
 import menu1Image from "../../assets/images/menu/menu1.png";
@@ -26,121 +32,28 @@ import avatar7Image from "../../assets/images/avatar/Avatar7.png";
 import avatar8Image from "../../assets/images/avatar/Avatar8.png";
 import avatar9Image from "../../assets/images/avatar/Avatar9.png";
 
-//import backgrund
-import background from "../../assets/images/latar/background.jpg";
-import background1 from "../../assets/images/latar/cover.jpg";
-
-//menambahkan footer
-import Footer from "../item/Footer";
-
-const contentData = [
-  {
-    id: 1,
-    image: menu1Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar1Image,
-  },
-  {
-    image: menu2Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar2Image,
-  },
-  {
-    image: menu3Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar3Image,
-  },
-  {
-    image: menu4Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar4Image,
-  },
-  {
-    image: menu5Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar5Image,
-  },
-  {
-    image: menu6Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar6Image,
-  },
-  {
-    image: menu7Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar7Image,
-  },
-  {
-    image: menu8Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar8Image,
-  },
-  {
-    image: menu9Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar9Image,
-  },
-  // Tambahkan data untuk kotak lainnya di sini
-];
 const HomePage = () => {
+  const [contentData, setContentData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://66c5eabb134eb8f434961c3e.mockapi.io/blog/BlogContent"
+        );
+        setContentData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen bg-[#FFE58036]  text-[#333] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">
       {/* Navbar */}
-      <nav className="bg-white  p-4 w-full flex items-center justify-between">
+      <nav className="bg-white p-4 w-full flex items-center justify-between">
         <img src={navigasiImage} alt="Navigation Logo" className="h-12" />
         <div className="flex items-center space-x-4">
           <Link to="/kategori" className="text-black font-medium">
@@ -155,15 +68,15 @@ const HomePage = () => {
         className="container mx-auto my-8 relative bg-cover bg-center rounded-lg overflow-hidden text-white"
         style={{
           backgroundImage: `url(${background})`,
-          backgroundSize: "", // Ukuran latar belakang menyesuaikan container
-          backgroundPosition: "center", // Posisi latar belakang di tengah
-          height: "50vh", // Tinggi section
+          backgroundSize: "",
+          backgroundPosition: "center",
+          height: "50vh",
         }}
       >
         <div className="absolute inset-0 bg-black opacity-80"></div>
         <div
           className="flex justify-center items-center relative p-6 md:p-12 h-full"
-          style={{ paddingTop: "10%" }} // Atur padding atas untuk konten di dalam section
+          style={{ paddingTop: "10%" }}
         >
           <div className="text-center relative z-10 w-full md:w-4/5 px-4 md:px-0">
             <h1 className="text-lg md:text-4xl">
@@ -190,7 +103,7 @@ const HomePage = () => {
           Koleksi Video Pembelajaran Unggulan
         </h1>
         <p className="mb-4">Jelajahi Dunia Pengetahuan Melalui Pilihan Kami</p>
-        <div className="flex  gap-4 flex-wrap">
+        <div className="flex gap-4 flex-wrap">
           <div className="px-4 py-2 cursor-pointer">Semua Kelas</div>
           <div className="px-4 py-2 cursor-pointer">Pemasaran</div>
           <div className="px-4 py-2 cursor-pointer">Desain</div>
@@ -202,47 +115,73 @@ const HomePage = () => {
       {/* Section 3 */}
       <section className="p-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
-          {contentData.map((item, index) => (
-            <Link
-              to={`/itemDetail/${item.id}`}
-              key={index}
-              className="bg-white shadow p-4 w-9/12 mx-0"
-            >
-              <img
-                src={item.image}
-                alt={`Gambar ${index + 1}`}
-                className="w-full mb-2"
-              />
-              <p className="font-bold">{item.title}</p>
-              <p className="text-sm mb-2 h hidden">{item.description}</p>
-              <div className="flex items-center mb-2">
+          {contentData.map((item, index) => {
+            // Tentukan gambar berdasarkan index
+            const avatarImages = [
+              avatar1Image,
+              avatar2Image,
+              avatar3Image,
+              avatar4Image,
+              avatar5Image,
+              avatar6Image,
+              avatar7Image,
+              avatar8Image,
+              avatar9Image,
+            ];
+            const menuImages = [
+              menu1Image,
+              menu2Image,
+              menu3Image,
+              menu4Image,
+              menu5Image,
+              menu6Image,
+              menu7Image,
+              menu8Image,
+              menu9Image,
+            ];
+
+            return (
+              <Link
+                to={`/itemDetail/${item.id}`}
+                key={item.id}
+                className="bg-white shadow p-4 w-9/12 mx-0"
+              >
                 <img
-                  src={item.avatar}
-                  alt="Menu Icon"
-                  className="w-8 h-8 mr-2"
+                  src={menuImages[index % menuImages.length]}
+                  alt={`Gambar ${item.title}`}
+                  className="w-full mb-2"
                 />
-                <div className="text-xs">
-                  <p>{item.author}</p>
-                  <p>{item.position}</p>
+                <p className="font-bold">{item.title}</p>
+                <p className="text-sm mb-2">{item.description}</p>
+                <div className="flex items-center mb-2">
+                  <img
+                    src={avatarImages[index % avatarImages.length]}
+                    alt="Menu Icon"
+                    className="w-8 h-8 mr-2"
+                  />
+                  <div className="text-xs">
+                    <p>{item.author}</p>
+                    <p>{item.position}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 h-4 text-yellow-500 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 1L12.245 6.432H18.364L13.818 10.568L16.064 16L10.001 12.999L3.937 16L6.183 10.568L1.636 6.432H7.755L10 1Z" />
-                    </svg>
-                  ))}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    {[...Array(3)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-4 h-4 text-yellow-500 mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 1L12.245 6.432H18.364L13.818 10.568L16.064 16L10.001 12.999L3.937 16L6.183 10.568L1.636 6.432H7.755L10 1Z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-green-500 font-bold">{item.price}</span>
                 </div>
-                <span className="text-green-500 font-bold">{item.price}</span>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -256,24 +195,22 @@ const HomePage = () => {
           height: "50vh",
         }}
       >
-        <div className="absolute inset-0 bg-black opacity-70"></div>{" "}
-        {/* Mengatur opasitas latar belakang menjadi lebih gelap */}
+        <div className="absolute inset-0 bg-black opacity-70"></div>
         <div
           className="flex justify-center items-center relative p-12 h-full"
           style={{ paddingTop: "10%" }}
         >
           <div className="text-center relative z-10 md:w-4/5">
-            <h1 className="text-3xl font-bold mb-4 md:mb-4">NEWSLETTER</h1>{" "}
+            <h1 className="text-3xl font-bold mb-4 md:mb-4">NEWSLETTER</h1>
             <h1 className="text-4xl font-bold mb-4 md:mb-4">
               Mau Belajar Lebih Banyak
-            </h1>{" "}
+            </h1>
             <p className="text-xl mb-4">
-              {" "}
               Daftarkan dirimu untuk mendapatkan informasi terbaru dan <br />
               penawaran spesial dari program program terbaik hariesok.id
             </p>
             <div className="flex justify-center mt-4">
-              <div className="relative w-full max-w-md  md:max-w-md">
+              <div className="relative w-full max-w-md md:max-w-md">
                 <input
                   type="text"
                   placeholder="Email Anda"

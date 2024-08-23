@@ -1,5 +1,6 @@
 //import react router
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -39,43 +40,23 @@ import Footer from "../item/Footer";
 
 //import use navitve
 
-//Content data
-const contentData = [
-  {
-    image: menu1Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar1Image,
-  },
-  {
-    image: menu2Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar2Image,
-  },
-  {
-    image: menu3Image,
-    title: "Auditor Financial Analyst",
-    description:
-      "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan kurikulum terbaik",
-    author: "Jenna Ortega",
-    position: "Senior Accountant di Gojek",
-    rating: 5,
-    price: "Rp 300k",
-    avatar: avatar3Image,
-  },
-];
 const ItemDetail = () => {
+  const [contentData, setContentData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://66c5eabb134eb8f434961c3e.mockapi.io/blog/BlogContent"
+        );
+        setContentData(response.data.slice(0, 3));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const { id } = useParams();
   console.log("Item ID:", id); // Tambahkan log ini
 
@@ -457,54 +438,53 @@ const ItemDetail = () => {
       </section>
 
       {/* Section 6 Main Content */}
-      <div className="container mx-auto mb-8">
+      <section className="container mx-auto mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {contentData.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow p-4 w-full max-w-sm mx-auto"
-            >
-              <div className="flex justify-center">
+          {contentData.map((item, index) => {
+            // Tentukan gambar berdasarkan index
+            const avatarImages = [avatar1Image, avatar2Image, avatar3Image];
+            const menuImages = [menu1Image, menu2Image, menu3Image];
+
+            return (
+              <div key={item.id} className="bg-white shadow p-4 w-9/12 mx-0">
                 <img
-                  src={item.image}
-                  alt={`Gambar ${index + 1}`}
-                  className="w-full max-w-sm mb-2 "
+                  src={menuImages[index % menuImages.length]} // Mengambil gambar menu berdasarkan index
+                  alt={`Gambar ${item.title}`}
+                  className="w-full mb-2"
                 />
-              </div>
-              <p className="font-bold text-lg mb-4">{item.title}</p>
-              <p className="text-sm mb-4  hidden sm:block">
-                {item.description}
-              </p>
-              <div className="flex items-center mb-4">
-                <img
-                  src={item.avatar}
-                  alt="Menu Icon"
-                  className="w-8 h-8 mr-2"
-                />
-                <div className="text-xs">
-                  <p>{item.author}</p>
-                  <p>{item.position}</p>
+                <p className="font-bold">{item.title}</p>
+                <p className="text-sm mb-2">{item.description}</p>
+                <div className="flex items-center mb-2">
+                  <img
+                    src={avatarImages[index % avatarImages.length]} // Mengambil gambar avatar berdasarkan index
+                    alt="Menu Icon"
+                    className="w-8 h-8 mr-2"
+                  />
+                  <div className="text-xs">
+                    <p>{item.author}</p>
+                    <p>{item.position}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    {[...Array(3)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-4 h-4 text-yellow-500 mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 1L12.245 6.432H18.364L13.818 10.568L16.064 16L10.001 12.999L3.937 16L6.183 10.568L1.636 6.432H7.755L10 1Z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-green-500 font-bold">{item.price}</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 h-4 text-yellow-500 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 1L12.245 6.432H18.364L13.818 10.568L16.064 16L10.001 12.999L3.937 16L6.183 10.568L1.636 6.432H7.755L10 1Z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-green-500 font-bold">{item.price}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </div>
+      </section>
 
       {/* Section 7 Footer */}
       <Footer />

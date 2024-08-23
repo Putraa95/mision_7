@@ -7,6 +7,12 @@ const DropdownButton = ({ options }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleOptionClick = (option) => {
+    // Tambahkan logika untuk menangani klik opsi
+    console.log(option);
+    setIsOpen(false); // Menutup dropdown setelah opsi dipilih
+  };
+
   return (
     <div className="relative inline-block text-left">
       <button
@@ -20,33 +26,24 @@ const DropdownButton = ({ options }) => {
           viewBox="0 0 20 20"
           fill="currentColor"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
         </svg>
       </button>
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             {options.map((option, index) => (
-              <a
+              <button
                 key={index}
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => handleOptionClick(option)}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 {option}
-              </a>
+              </button>
             ))}
           </div>
         </div>
