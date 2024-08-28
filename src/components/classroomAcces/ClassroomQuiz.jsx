@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import Question from "./classroomQuestion/Question";
-import QuestionNavigation from "./classroomQuestion/QuestionNavigation";
+import { useNavigate } from "react-router-dom";
+import Question from "./classroomitem/Question";
+import QuestionNavigation from "./classroomitem/QuestionNavigation";
 import avatar13Image from "../../assets/images/avatar/Avatar13.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
-  faArrowRight,
   faVideo,
   faStar,
   faChevronDown,
+  faChevronRight,
+  faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-// Daftar modul yang akan ditampilkan di sidebar
 const modules = [
   { title: "Video: Introduction to HR", duration: "12 menit" },
   { title: "Video: Introduction to HR", duration: "12 menit" },
@@ -23,10 +24,11 @@ const modules = [
 ];
 
 const ClassroomQuiz = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const navigate = useNavigate();
 
-  // Daftar pertanyaan untuk kuis
   const questions = [
     {
       question:
@@ -35,60 +37,111 @@ const ClassroomQuiz = () => {
         "Memikirkan tentang default ",
         "Mempertimbangkan page layout berdasarkan suatu tujuan",
         "Memastikan bahwa sistem berjalan sesuai dengan apa yang terjadi saat itu juga",
-        "menciptakan konsistensi dengan menggunakan elemen UI umun",
+        "menciptakan konsistensi dengan menggunakan elemen UI umum",
       ],
+      correctAnswer: "Memikirkan tentang default ",
     },
     {
       question: "Apa ibu kota Indonesia?",
       options: ["Jakarta", "Surabaya", "Bandung", "Medan"],
+      correctAnswer: "Jakarta",
     },
     {
       question: "Siapa presiden pertama Indonesia?",
       options: ["Soekarno", "Soeharto", "Habibie", "Jokowi"],
+      correctAnswer: "Soekarno",
     },
     {
       question: "Apa hasil bumi utama Indonesia?",
       options: ["Minyak", "Beras", "Kopi", "Timah"],
+      correctAnswer: "Beras",
     },
     {
       question: "Pulau terbesar di Indonesia?",
       options: ["Jawa", "Sumatra", "Kalimantan", "Papua"],
+      correctAnswer: "Kalimantan",
     },
     {
       question: "Tahun berapa Indonesia merdeka?",
       options: ["1945", "1950", "1965", "1970"],
+      correctAnswer: "1945",
     },
     {
       question: "Apa ibukota negara Jepang?",
       options: ["Seoul", "Tokyo", "Beijing", "Bangkok"],
+      correctAnswer: "Tokyo",
     },
     {
       question: "Apa bahasa resmi Brasil?",
       options: ["Spanyol", "Portugis", "Inggris", "Prancis"],
+      correctAnswer: "Portugis",
     },
     {
       question: "Apa mata uang utama di Eropa?",
       options: ["Euro", "Dollar", "Pound", "Yen"],
+      correctAnswer: "Euro",
     },
     {
       question: "Gunung tertinggi di dunia?",
       options: ["Fuji", "Everest", "Elbrus", "Aconcagua"],
+      correctAnswer: "Everest",
     },
   ];
 
-  const handleAnswer = (answer) => {
-    const updatedAnswers = [...answers];
-    updatedAnswers[currentQuestion] = answer;
-    setAnswers(updatedAnswers);
+  const handleAnswer = (selectedOption) => {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (selectedOption && currentQuestion && currentQuestion.correctAnswer) {
+      const isCorrect =
+        selectedOption.trim().toLowerCase() ===
+        currentQuestion.correctAnswer.trim().toLowerCase();
+
+      if (isCorrect) {
+        setCorrectAnswers(correctAnswers + 1);
+      }
+    } else {
+      console.error("selectedOption atau correctAnswer tidak terdefinisi");
+    }
+
+    const newAnswers = [...answers];
+    newAnswers[currentQuestionIndex] = selectedOption;
+    setAnswers(newAnswers);
+  };
+
+  const handleNextQuestion = () => {
+    const nextIndex = currentQuestionIndex + 1;
+
+    if (nextIndex < questions.length) {
+      setCurrentQuestionIndex(nextIndex);
+    } else {
+      const score = (correctAnswers / questions.length) * 100;
+
+      if (score >= 70) {
+        // Jika nilai 70 atau lebih, navigasi ke halaman congrats
+        navigate("/classroomAcces/congrats", {
+          state: { correctAnswers, totalQuestions: questions.length },
+        });
+      } else {
+        // Jika nilai di bawah 70, navigasi ke halaman try again
+        navigate("/classroomAcces/tryagain", {
+          state: { correctAnswers, totalQuestions: questions.length },
+        });
+      }
+    }
+  };
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    }
   };
 
   const handleQuestionClick = (index) => {
-    setCurrentQuestion(index);
+    setCurrentQuestionIndex(index);
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-white font-sans">
-      {/* Navigasi Atas */}
       <nav className="bg-white shadow p-4 w-full flex items-center justify-between">
         <div className="flex items-center">
           <FontAwesomeIcon icon={faArrowLeft} className="text-gray-600 mr-2" />
@@ -113,44 +166,55 @@ const ClassroomQuiz = () => {
         </div>
       </nav>
 
-      {/* Konten Utama */}
       <div className="flex-grow flex flex-col lg:flex-row w-full">
-        {/* Sidebar */}
         <div className="w-full lg:w-1/5 p-4">
           <div className="bg-white shadow-lg rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-4">Soal</h2>
             <QuestionNavigation
-              currentQuestion={currentQuestion}
+              currentQuestion={currentQuestionIndex}
               handleQuestionClick={handleQuestionClick}
             />
           </div>
         </div>
 
-        {/* Section 1 */}
         <div className="w-full lg:w-3/4 p-4 flex flex-col">
-          <Question
-            question={questions[currentQuestion].question}
-            options={questions[currentQuestion].options}
-            onAnswer={handleAnswer}
-          />
-          <div className="mt-4">
-            <h2>Jawaban Anda:</h2>
-            <ul>
-              {answers.map((answer, index) => (
-                <li key={index}>{`Soal ${index + 1}: ${answer}`}</li>
-              ))}
-            </ul>
+          <div className="flex flex-col items-center">
+            <Question
+              number={currentQuestionIndex + 1}
+              question={questions[currentQuestionIndex].question}
+              options={questions[currentQuestionIndex].options}
+              onAnswer={handleAnswer}
+              isLastQuestion={currentQuestionIndex === questions.length - 1}
+              onNext={handleNextQuestion}
+              onPrevious={handlePreviousQuestion}
+            />
           </div>
         </div>
-        {/* Section 1 END */}
-        <div className="lg:hidden flex items-center justify-center py-4 bg-green-500">
-          <FontAwesomeIcon icon={faArrowLeft} className="text-white mr-2" />
-          <p className="text-lg font-semibold text-white">Sebelumnya</p>
-          <p className="text-lg font-semibold text-white mx-4"></p>
-          <p className="text-lg font-semibold text-white">Selanjutnya</p>
-          <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
-        </div>
-        {/* Section 2 */}
+
+        <footer className="bg-green-500 w-full py-4 mt-10 lg:hidden">
+          <div className="flex items-center justify-between mx-4 lg:mr-20 mb-2">
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faChevronLeft}
+                className="text-white mr-2"
+              />
+              <div className="text-sm lg:text-xl font-semibold text-white hover:underline">
+                <p className="mb-0">Foundations of User Experience Design</p>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <div className="text-sm lg:text-xl font-semibold text-white hover:underline">
+                <p className="mb-0">Foundations of User Experience Design</p>
+              </div>
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="text-white ml-2"
+              />
+            </div>
+          </div>
+        </footer>
+
+        {/* section 2 */}
         <div className="w-full lg:w-1/5 p-4">
           <div className="bg-white shadow-lg rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-4">Modul</h2>
@@ -175,9 +239,8 @@ const ClassroomQuiz = () => {
                 </li>
               ))}
 
-              {/* Item Tambahan */}
-              <div className="flex items-center justify-center mt-4">
-                <p>Introduction to HR</p>
+              <div className="flex items-center justify-center mt-4  ">
+                <p className="">Introduction to HR</p>
                 <FontAwesomeIcon
                   icon={faChevronDown}
                   className="text-gray-600 ml-2"
@@ -190,19 +253,31 @@ const ClassroomQuiz = () => {
             </ul>
           </div>
         </div>
-        {/* Section 2 END */}
       </div>
 
-      {/* Footer */}
-      <footer className="bg-green-500 w-full ">
-        <div className="flex items-center justify-end mr-20 lg:mr-20 m-2">
-          <FontAwesomeIcon icon={faArrowLeft} className="text-white mr-2" />
-          <span className="text-xl font-semibold text-white">
-            Foundations of User Experience Design
-          </span>
+      {/* footer */}
+
+      <footer className="bg-green-500 w-full py-4 mt-10 hidden lg:block">
+        <div className="flex items-center justify-between mx-4 lg:mr-20 mb-2">
+          <div className="flex items-center">
+            <FontAwesomeIcon icon={faChevronLeft} className="text-white mr-2" />
+            <div className="text-sm lg:text-xl font-semibold text-white hover:underline">
+              <p className="mb-0">Foundations of User Experience Design</p>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="text-sm lg:text-xl font-semibold text-white hover:underline">
+              <p className="mb-0">Foundations of User Experience Design</p>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="text-white ml-2"
+            />
+          </div>
         </div>
       </footer>
-      <footer className="bg-green-500 w-full py-4"></footer>
+
+      {/* footer end */}
     </div>
   );
 };

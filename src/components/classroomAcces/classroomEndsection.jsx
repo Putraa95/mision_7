@@ -8,10 +8,11 @@ import {
   faVideo,
   faStar,
   faChevronDown,
-  faArrowRight,
   faChevronRight,
   faBook,
   faCheckCircle,
+  faChevronLeft,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import Video1 from "../../assets/video/Video.png";
 
@@ -25,7 +26,7 @@ const modules = [
   { title: "QUIZ Introduction to HR", duration: "10 Pertanyaan" },
 ];
 
-const ClassroomEntry = () => {
+const ClassroomEndsection = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-white font-sans">
       {/* Navigasi Atas */}
@@ -64,59 +65,52 @@ const ClassroomEntry = () => {
           />
 
           <div className="mt-4 lg:ml-20">
-            <h1 className="text-2xl font-bold mb-4">
-              Praktikan Skill dengan Teknikal Book
+            <h1 className="text-1xl font-bold mb-4">
+              Download Rangkuman Modul
             </h1>
             <p className="text-lg text-gray-500 mb-4">
-              Pelajari dan praktikkan skill teknis dalam berbagai industri
-              dengan Technical Book Riselearn
+              Silahkan download rangkuman modul dari materi yang telah kamu
+              pelajari
             </p>
-            <div className="flex items-center space-x-4">
-              <img
-                src={avatar13Image}
-                alt="Avatar"
-                className="h-12 w-12 rounded-full"
+            <button className=" bg-white text-green-500 border border-green-500 text-l py-2 px-6 rounded-lg hover:bg-green-300 transition duration-300 flex items-center mb-8 ">
+              <FontAwesomeIcon
+                icon={faDownload}
+                className="text-green-500 ml-2"
               />
-              <div>
-                <p className="font-bold text-lg">Jenna Ortega</p>
-                <p className="text-gray-500 text-sm">
-                  Senior Accountant di Gojek
-                </p>
-                <div className="flex items-center mt-2">
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-gray-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-gray-500 text-lg"
-                  />
-                  <p className="text-gray-500 ml-2">3.5(86)</p>
-                </div>
-              </div>
-            </div>
+              <span className="m-2">Download Rangkuman</span>
+            </button>
           </div>
         </div>
         {/* Section 1 END */}
-        <div className="lg:hidden flex items-center justify-center py-4 bg-green-500">
-          <FontAwesomeIcon icon={faArrowLeft} className="text-white mr-2" />
-          <p className="text-lg font-semibold text-white">Sebelumnya</p>
-          <p className="text-lg font-semibold text-white mx-4"></p>
-          <p className="text-lg font-semibold text-white">Selanjutnya</p>
-          <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
-        </div>
+
+        <footer className=" bg-green-500 w-full py-4 mt-10 lg:hidden">
+          <div className="flex items-center justify-between mx-4 lg:mr-20 mb-2">
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faChevronLeft}
+                className="text-white mr-2"
+              />
+              <Link
+                to="/classroomAcces/quiz"
+                className="text-sm lg:text-xl font-semibold text-white hover:underline"
+              >
+                <p className="mb-0">Foundations of User Experience Design</p>
+              </Link>
+            </div>
+            <div className="flex items-center">
+              <Link
+                to="/classroomAcces/quiz"
+                className="text-sm lg:text-xl font-semibold text-white hover:underline"
+              >
+                <p className="mb-0">Foundations of User Experience Design</p>
+              </Link>
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="text-white ml-2"
+              />
+            </div>
+          </div>
+        </footer>
         {/* Section 2 */}
         <div className="bg-white shadow-lg rounded-lg p-4">
           <h2 className="text-xl font-semibold mb-4">Modul</h2>
@@ -172,19 +166,33 @@ const ClassroomEntry = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-green-500 w-full py-4">
-        <div className="flex items-center justify-end mr-4 lg:mr-20 mb-2">
-          <Link
-            to="/classroomAcces/classrules"
-            className="text-xl font-semibold text-white hover:underline flex items-center"
-          >
-            <p className="mb-0">Foundations of User Experience Design</p>
-          </Link>
-          <FontAwesomeIcon icon={faChevronRight} className="text-white ml-2" />
+      <footer className="hidden lg:block bg-green-500 w-full py-4 mt-10">
+        <div className="flex items-center justify-between mx-4 lg:mr-20 mb-2">
+          <div className="flex items-center">
+            <FontAwesomeIcon icon={faChevronLeft} className="text-white mr-2" />
+            <Link
+              to="/classroomAcces/quiz"
+              className="text-sm lg:text-xl font-semibold text-white hover:underline"
+            >
+              <p className="mb-0">Foundations of User Experience Design</p>
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <Link
+              to="/classroomAcces/quiz"
+              className="text-sm lg:text-xl font-semibold text-white hover:underline"
+            >
+              <p className="mb-0">Foundations of User Experience Design</p>
+            </Link>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="text-white ml-2"
+            />
+          </div>
         </div>
       </footer>
     </div>
   );
 };
 
-export default ClassroomEntry;
+export default ClassroomEndsection;

@@ -1,5 +1,6 @@
 // src/components/ClassroomEntry.js
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import avatar13Image from "../../assets/images/avatar/Avatar13.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,11 +10,11 @@ import {
   faStar,
   faChevronDown,
   faArrowRight,
-  faChevronRight,
+  faChevronLeft,
   faBook,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import Video1 from "../../assets/video/Video.png";
+import imageRules from "../../assets/images/latar/rules.png";
 
 const modules = [
   { title: "Video: Introduction to HR", duration: "12 menit" },
@@ -25,7 +26,12 @@ const modules = [
   { title: "QUIZ Introduction to HR", duration: "10 Pertanyaan" },
 ];
 
-const ClassroomEntry = () => {
+const ClassRules = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/classroomAcces/quiz"); // Mengarahkan ke halaman classroomQuiz
+  };
   return (
     <div className="min-h-screen flex flex-col items-center bg-white font-sans">
       {/* Navigasi Atas */}
@@ -58,65 +64,39 @@ const ClassroomEntry = () => {
         {/* Section 1 */}
         <div className="w-full lg:w-3/4 p-4 flex flex-col">
           <img
-            src={Video1}
+            src={imageRules}
             alt="Video Thumbnail"
             className="w-full h-auto rounded-lg"
           />
 
           <div className="mt-4 lg:ml-20">
-            <h1 className="text-2xl font-bold mb-4">
-              Praktikan Skill dengan Teknikal Book
-            </h1>
-            <p className="text-lg text-gray-500 mb-4">
-              Pelajari dan praktikkan skill teknis dalam berbagai industri
-              dengan Technical Book Riselearn
+            <h1 className="text-2xl font-bold mb-4">Peraturan</h1>
+            <p className="text-lg text-gray-500 mb-4 ">
+              Kerjakan pretest dengan sebaik mungkin untuk mengukur pemahaman
+              awalmu terkait materi yang akan kamu pelajari
+              <br />
+              <span className="block mt-2">Syarat Nilai Kelulusan: - </span>
+              <span className="block mt-1">Durasi Ujian: 5 Menit</span>
+              <span className="block mt-1">
+                Jangan khawatir, total skor tidak akan memengaruhi kelulusan dan
+                penilaian akhirmu dalam rangkaian kelas ini
+              </span>
             </p>
-            <div className="flex items-center space-x-4">
-              <img
-                src={avatar13Image}
-                alt="Avatar"
-                className="h-12 w-12 rounded-full"
+            <button
+              onClick={handleClick} // Menggunakan handleClick saat tombol diklik
+              className="bg-green-500 text-white text-xl py-3 px-8 rounded-lg hover:bg-green-700 transition duration-300 flex items-center"
+            >
+              Mulai Pre-Test
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="text-white ml-2"
               />
-              <div>
-                <p className="font-bold text-lg">Jenna Ortega</p>
-                <p className="text-gray-500 text-sm">
-                  Senior Accountant di Gojek
-                </p>
-                <div className="flex items-center mt-2">
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-yellow-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-gray-500 text-lg"
-                  />
-                  <FontAwesomeIcon
-                    icon={faStar}
-                    className="text-gray-500 text-lg"
-                  />
-                  <p className="text-gray-500 ml-2">3.5(86)</p>
-                </div>
-              </div>
-            </div>
+            </button>
           </div>
         </div>
+
         {/* Section 1 END */}
-        <div className="lg:hidden flex items-center justify-center py-4 bg-green-500">
-          <FontAwesomeIcon icon={faArrowLeft} className="text-white mr-2" />
-          <p className="text-lg font-semibold text-white">Sebelumnya</p>
-          <p className="text-lg font-semibold text-white mx-4"></p>
-          <p className="text-lg font-semibold text-white">Selanjutnya</p>
-          <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
-        </div>
+
         {/* Section 2 */}
         <div className="bg-white shadow-lg rounded-lg p-4">
           <h2 className="text-xl font-semibold mb-4">Modul</h2>
@@ -173,18 +153,18 @@ const ClassroomEntry = () => {
 
       {/* Footer */}
       <footer className="bg-green-500 w-full py-4">
-        <div className="flex items-center justify-end mr-4 lg:mr-20 mb-2">
+        <div className="flex items-center justify-start ml-4 lg:mr-20 mb-2">
+          <FontAwesomeIcon icon={faChevronLeft} className="text-white mr-2" />
           <Link
-            to="/classroomAcces/classrules"
-            className="text-xl font-semibold text-white hover:underline flex items-center"
+            to="/classroomAcces/quiz"
+            className="text-xl font-semibold text-white hover:underline"
           >
             <p className="mb-0">Foundations of User Experience Design</p>
           </Link>
-          <FontAwesomeIcon icon={faChevronRight} className="text-white ml-2" />
         </div>
       </footer>
     </div>
   );
 };
 
-export default ClassroomEntry;
+export default ClassRules;
