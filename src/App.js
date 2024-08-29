@@ -23,8 +23,14 @@ import Invoice2 from "./components/order/invoice/invoiceOrderComplete";
 import Pagination from "./components/item/Pagination";
 import ClassroomEntry from "./components/classroomAcces/ClaasroomEntry";
 import ClassroomQuiz from "./components/classroomAcces/ClassroomQuiz";
-import Question from "./components/classroomAcces/classroomQuestion/Question";
-import QuestionNavigation from "./components/classroomAcces/classroomQuestion/QuestionNavigation";
+import ClassroomRules from "./components/classroomAcces/ClassRules";
+import ClassroomCongrats from "./components/classroomAcces/ClassroomCongrats";
+import ClassroomTryAgain from "./components/classroomAcces/ClassroomTryAgain";
+import ClassroomEndsection from "./components/classroomAcces/classroomEndsection";
+import Question from "./components/classroomAcces/ClassRoomItem/Question";
+import QuestionNavigation from "./components/classroomAcces/ClassRoomItem/QuestionNavigation";
+import ClassroomCertificate from "./components/classroomAcces/ClassroomCertificate";
+import RatingPopup from "./components/classroomAcces/ClassRoomItem/RatingPopup";
 
 const App = () => {
   return (
@@ -43,14 +49,29 @@ const App = () => {
       <Route path="/order/confirmation" element={<OrderConfirmation />} />
       <Route path="/order/complete" element={<OrderComplete />} />
       <Route path="/classroomAcces/Entry" element={<ClassroomEntry />} />
+      <Route path="/classroomAcces/classrules" element={<ClassroomRules />} />
       <Route path="/classroomAcces/quiz" element={<ClassroomQuiz />} />
+      <Route path="/classroomAcces/congrats" element={<ClassroomCongrats />} />
+      <Route path="/classroomAcces/tryagain" element={<ClassroomTryAgain />} />
       <Route
-        path="/classroomAcces/ClassroomQuestion/Question"
+        path="/classroomAcces/certificate"
+        element={<ClassroomCertificate />}
+      />
+      <Route
+        path="/classroomAcces/ClassRoomItem/Question"
         element={<Question />}
       />
       <Route
-        path="/classroomAcces/ClassroomQuestion/Questionnavigation"
+        path="/classroomAcces/ClassRoomItem/Questionnavigation"
         element={<QuestionNavigation />}
+      />
+      <Route
+        path="/classroomAcces/ClassRoomItem/ratingpopup"
+        element={<RatingPopup />}
+      />
+      <Route
+        path="/classroomAcces/endsection"
+        element={<ClassroomEndsection />}
       />
       <Route path="/order/invoice" element={<Invoice />} />
       <Route path="/order/invoice2" element={<Invoice2 />} />

@@ -17,7 +17,7 @@ import {
   faListOl,
 } from "@fortawesome/free-solid-svg-icons";
 import imageRules from "../../assets/images/latar/congrats.png";
-import RatingPopup from "./classroomitem/RatingPopup";
+import RatingPopup from "./ClassRoomItem/RatingPopup";
 
 const modules = [
   { title: "Video: Introduction to HR", duration: "12 menit" },
@@ -53,7 +53,7 @@ const ClaasroomCongrats = () => {
   const [showCertificateButton, setShowCertificateButton] = useState(false);
 
   const handleCertificateToggle = () => {
-    setShowCertificateButton(true);
+    setShowCertificateButton(!showCertificateButton);
   };
   return (
     <div className="min-h-screen flex flex-col items-center bg-white font-sans">
@@ -73,7 +73,7 @@ const ClaasroomCongrats = () => {
             {showCertificateButton ? "Batal" : "Ambil Sertifikat"}
           </button>
           {showCertificateButton && (
-            <div className="absolute bg-white shadow-lg rounded-lg p-4 mt-2 w-64 text-center border border-gray-300">
+            <div className="absolute top-full right-10 bg-white shadow-lg rounded-lg p-4 mt-2 w-64 text-center border border-gray-300">
               <p className="text-gray-600 mb-4">Modul telah selesai</p>
               <Link
                 to="/classroomAcces/certificate" // Ganti dengan path file sertifikat yang sesuai

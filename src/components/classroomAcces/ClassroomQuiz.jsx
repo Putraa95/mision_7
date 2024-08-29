@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Question from "./classroomitem/Question";
-import QuestionNavigation from "./classroomitem/QuestionNavigation";
+import Question from "./ClassRoomItem/Question";
+import QuestionNavigation from "./ClassRoomItem/QuestionNavigation";
 import avatar13Image from "../../assets/images/avatar/Avatar13.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

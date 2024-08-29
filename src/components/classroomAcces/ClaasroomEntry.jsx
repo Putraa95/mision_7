@@ -118,7 +118,7 @@ const ClassroomEntry = () => {
           <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
         </div>
         {/* Section 2 */}
-        <div className="bg-white shadow-lg rounded-lg p-4">
+        <div className="p-14">
           <h2 className="text-xl font-semibold mb-4">Modul</h2>
           <ul className="space-y-4">
             {modules.map((module, index) => (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import image1 from "../../../assets/images/latar/team-meeting 1.png";
 const Question = ({
   number,
   question,
@@ -12,23 +12,33 @@ const Question = ({
   onPrevious,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
   const handleSubmit = () => {
-    onAnswer(selectedOption);
     if (isLastQuestion) {
-      // Panggil fungsi dari parent untuk mengarahkan ke halaman selanjutnya
-      onNext();
+      // Jika ini adalah pertanyaan terakhir, buka modal konfirmasi
+      setShowConfirmationModal(true);
     } else {
+      onAnswer(selectedOption);
       onNext();
     }
   };
 
+  const handleConfirmFinish = () => {
+    onAnswer(selectedOption);
+    onNext(); // Panggil fungsi dari parent untuk mengarahkan ke halaman selanjutnya
+  };
+
+  const handleCloseModal = () => {
+    setShowConfirmationModal(false);
+  };
+
   return (
-    <div className="flex flex-col items-start w-full ">
+    <div className="flex flex-col items-start w-full">
       <div className="rounded-lg p-8 bg-white w-full max-w-2xl">
         {/* Nomor Soal */}
         <div className="text-left mb-2">
@@ -61,6 +71,7 @@ const Question = ({
           ))}
         </div>
 
+        {/* Tombol Navigasi */}
         <div className="mt-4 flex justify-between space-x-2">
           {number > 1 && (
             <button
@@ -90,6 +101,35 @@ const Question = ({
           </button>
         </div>
       </div>
+
+      {/* Modal Konfirmasi */}
+      {showConfirmationModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-8 shadow-lg w-96">
+            <img src={image1} alt="" />
+            <h3 className="text-lg font-bold mb-4 text-center">
+              Selesaikan Pretest
+            </h3>
+            <p className="text-gray-700 mb-6 text-center">
+              Apakah Anda yakin ingin menyelesaikan pretestm ini?
+            </p>
+            <div className="flex justify-end space-x-4">
+              <button
+                onClick={handleCloseModal}
+                className="bg-gray-300 text-gray-700 py-2 px-4 w-full rounded-lg hover:bg-gray-400"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleConfirmFinish}
+                className="bg-green-500 text-white py-2 px-4 w-full rounded-lg hover:bg-green-700"
+              >
+                Selesai
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
