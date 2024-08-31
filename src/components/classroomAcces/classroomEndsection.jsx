@@ -110,6 +110,8 @@ const ClassroomEndsection = () => {
               />
             </div>
           </div>
+
+          
         </footer>
         {/* Section 2 */}
         <div className="bg-white shadow-lg rounded-lg p-4">

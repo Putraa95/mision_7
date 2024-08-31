@@ -215,7 +215,7 @@ const ClassroomQuiz = () => {
         </footer>
 
         {/* section 2 */}
-        <div className="w-full lg:w-1/5 p-4">
+        <div className="p-14">
           <div className="bg-white shadow-lg rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-4">Modul</h2>
             <ul className="space-y-4">

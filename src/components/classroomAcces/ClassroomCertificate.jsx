@@ -5,6 +5,7 @@ import ImageCertificate from "../../assets/images/latar/sartifikat.png";
 import avatar13Image from "../../assets/images/avatar/Avatar1.png";
 import { faStar, faDownload } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/item/Footer";
+
 const ClassroomCertificate = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#FFE58036] text-[#333] font-sans">
