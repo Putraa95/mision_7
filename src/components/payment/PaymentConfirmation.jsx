@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { selectPaymentMethod } from "../../redux/paymentSlice";
 //import navigasi
 import navIcon from "../../assets/images/navigasi.png";
 //import logo bca
@@ -22,7 +23,12 @@ import {
 import menu1 from "../../assets/images/menu/menu1.png";
 
 const PaymentConfirmation = () => {
-  const [activeMethod, setActiveMethod] = useState(null);
+  const dispatch = useDispatch();
+  const activeMethod = useSelector((state) => state.payment.activeMethod);
+
+  const handleMethodClick = (method) => {
+    dispatch(selectPaymentMethod(method)); // Menggunakan `selectPaymentMethod`
+  };
 
   const methods = [
     {
@@ -207,11 +213,7 @@ Pembayaran telah selesai`,
               className={`border rounded-lg mb-2 cursor-pointer ${
                 activeMethod === method.name ? "bg-white" : ""
               }`}
-              onClick={() =>
-                setActiveMethod(
-                  method.name === activeMethod ? null : method.name
-                )
-              }
+              onClick={() => handleMethodClick(method.name)}
             >
               <div className="flex justify-start items-center mt-2 p-4">
                 <span className="font-bold">{method.name}</span>

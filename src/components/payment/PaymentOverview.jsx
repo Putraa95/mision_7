@@ -1,7 +1,8 @@
 import React from "react";
 // import navigasiImage from "../assets/images/navigasi.png";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectPaymentMethod } from "../../redux/paymentSlice";
 import Footer from "../item/Footer";
 
 //import navigasi
@@ -28,12 +29,19 @@ import {
   faVideo,
   faCertificate,
   faQuestionCircle,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 //link menu
 import menu1 from "../../assets/images/menu/menu1.png";
 
 const PaymentOverview = () => {
+  const dispatch = useDispatch();
+  const selectedMethod = useSelector((state) => state.payment.selectedMethod);
+
+  const handleSelectMethod = (method) => {
+    dispatch(selectPaymentMethod(method));
+  };
   return (
     // section Pembayaran
 
@@ -104,41 +112,101 @@ const PaymentOverview = () => {
             <h2 className="text-xl font-bold mb-4">Metode Pembayaran</h2>
             <div className="bg-white border rounded-lg">
               <div className="p-4 border-b">
-                <div className="flex justify-start items-center mt-2 border p-4">
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank BCA" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Bank BCA")}
+                >
                   <img src={BankBCA} alt="Bank BCA Logo" className="mr-2" />
                   <p className="text-gray-800">Bank BCA</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank BNI" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Bank BNI")}
+                >
                   <img src={BankBNI} alt="Bank BNI Logo" className="mr-2" />
                   <p className="text-gray-800">Bank BNI</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={BankBRI} alt="Bank BRI Logo" className="mr-2" />
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank " ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Bank BRI")}
+                >
+                  <img src={BankBRI} alt="Bank BRI" className="mr-2" />
                   <p className="text-gray-800">Bank BRI</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={Mandiri} alt="Bank Mandiri Logo" className="mr-2" />
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank Mandiri" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Bank BNI")}
+                >
+                  <img src={Mandiri} alt="Bank Mandiri" className="mr-2" />
                   <p className="text-gray-800">Bank Mandiri</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={Dana} alt="Logo Dana" className="mr-2" />
+                <div className="flex justify-between items-center mt-2 border p-4 bg-white">
+                  <p className="font-bold">E-Wallet</p>
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-gray-800 mr-2"
+                  />
+                </div>
+
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank BNI" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Dana")}
+                >
+                  <img src={Dana} alt="Dana" className="mr-2" />
                   <p className="text-gray-800">Dana</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={OVO} alt="OVO" className="mr-2" />
-                  <p className="text-gray-800">OVO</p>
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank BNI" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Ovo")}
+                >
+                  <img src={OVO} alt="Dana" className="mr-2" />
+                  <p className="text-gray-800">Ovo</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={LinkAja} alt="Link Aja" className="w-8 h-8 mr-2" />
-                  <p className="text-gray-800">LinkAja</p>
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Bank BNI" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("LinkAja")}
+                >
+                  <img src={LinkAja} alt="Dana" className="mr-2" />
+                  <p className="text-gray-800">Link Aja</p>
                 </div>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={ShopeLogo} alt="Shoppe pay" className="mr-2" />
-                  <p className="text-gray-800">Shoppe pay</p>
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Shopee Pay" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Shopee Pay")}
+                >
+                  <img src={ShopeLogo} alt="Dana" className="mr-2" />
+                  <p className="text-gray-800">Shopee Pay</p>
                 </div>
-                <h2 className="text-xl font-bold mb-4">Metode Pembayaran</h2>
-                <div className="flex justify-start items-center mt-2 border p-4">
-                  <img src={AtmBersama} alt="Bank BCA Logo" className="mr-2" />
+                <div className="flex justify-beetwen items-center mt-2 border p-4 bg-white">
+                  <p className="font-bold">Atm Bersama</p>
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-gray-800 mr-2"
+                  />
+                </div>
+                <div
+                  className={`flex justify-start items-center mt-2 border p-4 ${
+                    selectedMethod === "Atm Bersama" ? "bg-gray-200" : ""
+                  }`}
+                  onClick={() => handleSelectMethod("Atm Bersama")}
+                >
+                  <img src={AtmBersama} alt="Dana" className="mr-2" />
+                  <p className="text-gray-800">Atm Bersama</p>
                 </div>
               </div>
             </div>
