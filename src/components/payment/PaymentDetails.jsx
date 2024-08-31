@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setPaymentMethod } from "../../redux/paymentSlice";
 
 //import navigasi
 import navIcon from "../../assets/images/navigasi.png";
@@ -22,7 +24,8 @@ import Countdown from "../../components/item/Contdown";
 import menu1 from "../../assets/images/menu/menu1.png";
 
 const PaymentDetails = () => {
-  const [activeMethod, setActiveMethod] = useState(null);
+  const dispatch = useDispatch();
+  const activeMethod = useSelector((state) => state.payment.activeMethod);
 
   const endTime = new Date().getTime() + 3600 * 1000; // Contoh: waktu 1 jam dari sekarang
 
@@ -236,8 +239,10 @@ Pembayaran telah selesai`,
                 activeMethod === method.name ? "bg-white" : ""
               }`}
               onClick={() =>
-                setActiveMethod(
-                  method.name === activeMethod ? null : method.name
+                dispatch(
+                  setPaymentMethod(
+                    method.name === activeMethod ? null : method.name
+                  )
                 )
               }
             >
